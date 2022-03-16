@@ -12,4 +12,10 @@ class Games extends Shop {
         $this->prezzo = $prezzo;
         $this->descrizione = $descrizione;
     }
+
+    public function setPrezzo($prezzo){
+        if(is_numeric($prezzo) && $prezzo >= 0){
+            $this->prezzo = $prezzo;
+        }
+    }
 }
