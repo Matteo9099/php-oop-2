@@ -1,6 +1,6 @@
 <?php
 
-class Alimentazione {
+class Shop {
     public $marca;
     public $tipo;
     public $animale;

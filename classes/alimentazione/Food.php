@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/alimentazione.php';
+require_once __DIR__ . '/../Shop.php';
 
-class Food extends Alimentazione{
+class Food extends Shop{
     public $prezzo;
     public $descrizione;
 
