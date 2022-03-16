@@ -4,8 +4,9 @@ require_once __DIR__ . '/classes/Shop.php';
 // inclusioni Alimentazione
 require_once __DIR__ . '/classes/alimentazione/Food.php';
 require_once __DIR__ . '/classes/alimentazione/obj.php';
-
+// inclusioni Alimentazione
 require_once __DIR__ . '/classes/accessori/Games.php';
+require_once __DIR__ . '/classes/accessori/obj.php';
 
 
 // Food
@@ -18,11 +19,20 @@ foreach($foods as $food){
     echo "<p>Animale: ". $cibo->animale ."</p>";
     echo "<p>Prezzo: ". $cibo->prezzo ." &euro;</p>";
     echo "<p>Descrizione prodotto: ". $cibo->descrizione ."</p>";
-    
+    echo "<hr>";
 }
 
 //Games
-$cuccia = new Games('Domus',"Cuccia da interno","cane", 124.99, "Cuccia per cani in legno di pino nordico Domus Ferplast");
-$pesce = new Games("Gioco pesce Guizzante per gatto","Gomma","gatto",8.70,"Trixie pesce guizzante farà divertire il tuo gatto e si dimena irregolarmente quando viene toccato. Arresto automatico dopo 15 secondi. Ricarica tramite cavo USB.");
+echo "<h1>Games</h1>";
+foreach($games as $game){
+    $gioco = new Food($game['marca'],$game['tipo'],$game['animale'],$game['prezzo'],$game['descrizione']);
+
+    echo "<h3>Marca: ". $gioco->marca ."</h3>";
+    echo "<p>Tipo: ". $gioco->tipo ."</p>";
+    echo "<p>Animale: ". $gioco->animale ."</p>";
+    echo "<p>Prezzo: ". $gioco->prezzo ." &euro;</p>";
+    echo "<p>Descrizione prodotto: ". $gioco->descrizione ."</p>";
+    echo "<hr>";
+}
 
 
