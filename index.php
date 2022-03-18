@@ -1,54 +1,40 @@
 <?php
-require_once __DIR__ . '/classes/Shop.php';
-
-// inclusioni Alimentazione
-require_once __DIR__ . '/classes/alimentazione/Food.php';
-require_once __DIR__ . '/classes/alimentazione/obj.php';
-// inclusioni Alimentazione
-require_once __DIR__ . '/classes/accessori/Games.php';
-require_once __DIR__ . '/classes/accessori/obj.php';
-// inclusioni Cura e salute
-require_once __DIR__ . '/classes/Benessere/health.php';
-require_once __DIR__ . '/classes/Benessere/obj.php';
+// User
+require_once __DIR__ . '/classes/User.php';
+require_once __DIR__ . '/classes/CreditCard.php';
+//Power Supply
+require_once __DIR__ . '/classes/entertainment/ShopToys.php';
+require_once __DIR__ . '/classes/entertainment/Toys.php';
 
 
-// Food
-echo "<h1>Food</h1>";
-foreach($foods as $food){
-    $cibo = new Food($food['marca'],$food['tipo'],$food['animale'],$food['prezzo'],$food['descrizione']);
+$myUser = new User("Matteo", "Morganti", "info@morga.it");
 
-    echo "<h3>Marca: ". $cibo->marca ."</h3>";
-    echo "<p>Tipo: ". $cibo->tipo ."</p>";
-    echo "<p>Animale: ". $cibo->animale ."</p>";
-    echo "<p>Prezzo: ". $cibo->prezzo ." &euro;</p>";
-    echo "<p>Descrizione prodotto: ". $cibo->descrizione ."</p>";
+$myCreditCard = new CreditCard();
+
+$myCreditCard->setExpirationMonth('04');
+$myCreditCard->setExpirationYear('22');
+$myCreditCard->setCvv('123');
+$myCreditCard->setNumber('4242424242424242');
+
+$myCreditCard->owner = "Matteo Morganti";
+
+try{
+    $myCreditCard->isExpired();
+    $myUser->setCreditCard($myCreditCard); 
+}catch(Exception $e){
+    echo $e->getMessage();
+}
+
+foreach($toys as $toy){
+    $toyGame = new Toys($toy['name'],$toy['description'],$toy['price'],$toy['animals'],$toy['color']);
+
+    echo "<h3>Nome: ". $toyGame->name ."</h3>";
+    echo "<p>Descrizione: ". $toyGame->description ."</p>";
+    echo "<p>Prezzo: ". $toyGame->setPrice('price') ." &euro;</p>";
+    echo "<p>Animale: ". $toyGame->setAnimals('animals') ."</p>";
+    echo "<p>Colore: ". $toyGame->color ."</p>";
     echo "<hr>";
 }
 
-//Games
-echo "<h1>Games</h1>";
-foreach($games as $game){
-    $gioco = new Games($game['marca'],$game['tipo'],$game['animale'],$game['prezzo'],$game['descrizione']);
-
-    echo "<h3>Marca: ". $gioco->marca ."</h3>";
-    echo "<p>Tipo: ". $gioco->tipo ."</p>";
-    echo "<p>Animale: ". $gioco->animale ."</p>";
-    echo "<p>Prezzo: ". $gioco->prezzo ." &euro;</p>";
-    echo "<p>Descrizione prodotto: ". $gioco->descrizione ."</p>";
-    echo "<hr>";
-}
-
-//Cura e salute
-echo "<h1>Cura e Benessere</h1>";
-foreach($healths as $health){
-    $cura = new Health($health['marca'],$health['tipo'],$health['animale'],$health['prezzo'],$health['descrizione']);
-
-    echo "<h3>Marca: ". $cura->marca ."</h3>";
-    echo "<p>Tipo: ". $cura->tipo ."</p>";
-    echo "<p>Animale: ". $cura->animale ."</p>";
-    echo "<p>Prezzo: ". $cura->prezzo ." &euro;</p>";
-    echo "<p>Descrizione prodotto: ". $cura->descrizione ."</p>";
-    echo "<hr>";
-}
 
 
