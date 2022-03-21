@@ -49,7 +49,7 @@ class CreditCard {
     // verifica che il numero della carta sia un numero ed abbia 16 caratteri
     public function setNumber($number) {
         if(is_numeric($number) && strlen($number) == 16) {
-            $this->number = $number;
+            $this->number = $number ;
         }
     }
 
@@ -65,8 +65,5 @@ class CreditCard {
 
       
     }
-
-    
-
 
 }
