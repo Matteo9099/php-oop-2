@@ -50,7 +50,7 @@ foreach($foods as $food){
     echo "<p>Descrizione: ". $value->description ."</p>";
     echo "<p>Prezzo: ". $value->getPrice() ." &euro;</p>";
     echo "<p>Animale: ". $value->getAnimals() ."</p>";
-    echo "<p>Colore: ". $value->expiration ."</p>";
+    echo "<p>Scadenza: ". $value->expiration ."</p>";
     echo "<hr>";
 }
 
